@@ -9,14 +9,15 @@ jobs:
     steps:
       - name: Download repository
         uses: actions/checkout@v6
-      - name: install node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 'latest'
       - name: install dependencies
         uses: pnpm/action-setup@v6
         with:
-          version: latest
+          version: 10.8.0
+      - name: install node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'pnpm'
       - name: install dependencies
         run: pnpm install
       - name: run build
