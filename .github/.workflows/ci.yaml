@@ -1,0 +1,23 @@
+name: CI
+on:
+  pull_request:
+    branches: 
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download repository
+        uses: actions/checkout@v6
+      - name: install node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 'latest'
+      - name: install dependencies
+        uses: pnpm/action-setup@v6
+        with:
+          version: latest
+      - name: install dependencies
+        run: pnpm install
+      - name: run build
+        run: pnpm build
